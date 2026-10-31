@@ -44,6 +44,7 @@ function App() {
     return (
       <DashboardPage
         userName={user.name}
+        photoUrl={user.photo_url}
         onLogout={handleLogout}
       />
     );
