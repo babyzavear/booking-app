@@ -1,0 +1,21 @@
+# Environment
+.env
+.env.*
+!.env.example
+
+backend/.env
+frontend/.env
+
+# Dependencies
+backend/vendor/
+frontend/node_modules/
+
+# Build
+frontend/dist/
+
+# Logs
+*.log
+
+# IDE
+.idea/
+.vscode/
