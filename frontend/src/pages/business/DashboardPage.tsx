@@ -17,6 +17,7 @@ import {
 
 interface Props {
   userName: string;
+  photoUrl: string | null;
   onLogout: () => void;
 }
 
@@ -48,8 +49,10 @@ function formatPrice(price: string | number) {
 
 export default function DashboardPage({
   userName,
+  photoUrl,
   onLogout,
 }: Props) {
+  const [photoFailed, setPhotoFailed] = useState(false);
   const [filter, setFilter] = useState<BookingStatus | "all">("all");
   const queryClient = useQueryClient();
 
@@ -154,7 +157,17 @@ export default function DashboardPage({
           </div>
 
           <div className="user-avatar">
-            {userName.charAt(0).toUpperCase()}
+            {photoUrl && !photoFailed ? (
+              <img
+                src={photoUrl}
+                alt={`Foto profil ${userName}`}
+                className="user-avatar-photo"
+                referrerPolicy="no-referrer"
+                onError={() => setPhotoFailed(true)}
+              />
+            ) : (
+              userName.charAt(0).toUpperCase()
+            )}
           </div>
         </header>
 

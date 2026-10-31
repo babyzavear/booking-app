@@ -47,12 +47,7 @@ class TelegramAuthController extends Controller
             ], 500);
         }
 
-        $secretKey = hash_hmac(
-            'sha256',
-            'WebAppData',
-            $botToken,
-            true
-        );
+        $secretKey = hash_hmac('sha256', $botToken, 'WebAppData', true);
 
         $calculatedHash = hash_hmac(
             'sha256',
